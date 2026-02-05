@@ -33,7 +33,7 @@ export class HomePage {
   articleAtGlobalFeed(title) {
   return this.page
     .locator('.article-preview')
-    .filter({ hasText: `Article title: ${title}` });
+    .filter({ hasText: title});
   }
 
   articleTitleAtGlobalFeed(title) {
