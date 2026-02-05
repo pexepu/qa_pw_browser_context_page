@@ -4,6 +4,10 @@ export class ViewArticlePage {
   constructor(page) {
     this.page = page;
     this.articleTitleHeader = page.getByRole('heading');
+    this.articleEditButton = page.getByRole(
+      'link', 
+      { name: 'Edit Article' })
+      .first();
   }
 
   authorLinkInArticleHeader(username) {
@@ -71,6 +75,12 @@ export class ViewArticlePage {
   async followUserLinkToBeVisible(username) {
     await test.step('Follow button to be visible', async () =>{
       await expect(this.followUserLink(username)).toBeVisible();
+    });
+  }
+
+  async clickArticleEditButton() {
+    await test.step('Click Edit article page', async() =>{
+      await this.articleEditButton.click();
     });
   }
 

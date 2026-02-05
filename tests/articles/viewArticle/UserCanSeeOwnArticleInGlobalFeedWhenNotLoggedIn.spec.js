@@ -16,7 +16,7 @@ test('User can see own article in "Global feed" when not logged in', async ({
   const homePage = new HomePage(page2);
 
   
-  await page2.waitForTimeout(20_000);
+ 
 
 
   await page2.goto('/');

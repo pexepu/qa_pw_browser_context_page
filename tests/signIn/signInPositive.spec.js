@@ -2,7 +2,7 @@ import { test } from '../_fixtures/fixtures';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
 import { SignInPage } from '../../src/ui/pages/auth/SignInPage';
 import { HomePage } from '../../src/ui/pages/HomePage';
-import { SignUpPage } from '../../src/ui/pages/auth/SignUpPage';
+import { SettingsPage } from '../../src/ui/pages/settings/SettingsPage';
 
 let signInPage;
 let homePage;
@@ -30,11 +30,12 @@ test('User can sign in with changed in profile password', async ({
   page1,
   user2,
 }) => {
-  const signUpPage = new SignUpPage(page1);
-  await page1.goto('/settings');
-  await signUpPage.fillNewPasswordField(user2.password);
+  const settingsPage = new SettingsPage(page1);
+
+  await settingsPage.open();
+  await settingsPage.fillNewPasswordField(user2.password);
   
-  await signUpPage.clickUpdateSettingsButton();
+  await settingsPage.clickUpdateSettingsButton();
   await signInPage.open();
   await signInPage.fillEmailField(user.email);
   await signInPage.fillPasswordField(user2.password);

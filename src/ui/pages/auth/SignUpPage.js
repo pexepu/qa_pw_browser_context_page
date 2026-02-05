@@ -8,9 +8,6 @@ export class SignUpPage {
     this.passwordField = page.getByPlaceholder('Password');
     this.signUpButton = page.getByRole('button', { name: 'Sign up' });
     this.errorMessage = page.getByRole('list').nth(1);
-    this.updateSettingsButton = page.getByRole('button', 
-      { name: 'Update Settings' });
-    this.newPasswordField = page.getByPlaceholder('New Password');
   }
 
   async open() {
@@ -57,22 +54,6 @@ export class SignUpPage {
       await expect(this.errorMessage).toContainText(messageText);
     });
   }
-
-   async clickUpdateSettingsButton() {
-    await test.step(`Click the 'Update settings' button`, async () => {
-      await this.updateSettingsButton.click();
-    });
-  }
-
-  async fillNewPasswordField(password) {
-    await test.step(`Fill the 'New Password' field`, async () => {
-      await this.newPasswordField.fill(password);
-    });
-  }
-
-
-
-
 }
 
  
